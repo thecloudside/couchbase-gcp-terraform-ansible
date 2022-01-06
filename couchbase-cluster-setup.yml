@@ -1,6 +1,10 @@
+
 ---
 - name: Couchbase Installation
   hosts: all
+  vars:
+       username: admin
+       password: Testing12345
 
   tasks:
   - name: download Couchbase package
@@ -17,17 +21,12 @@
   - name: Install the couchbase packages
     shell: sudo apt-get install couchbase-server-community -y
 
-
-- name: Initialize the cluster and add the nodes to the cluster
-  hosts: all
-
-  tasks:
   - name: wait for 1 minute to ready the cluster
     pause:
       minutes: 1
 
   - name: Configure main node
-    shell: /opt/couchbase/bin/couchbase-cli cluster-init -c 127.0.0.1:8091 --cluster-name CouchbaseServer --cluster-username admin --cluster-password Testing1234 --services data 
+    shell: /opt/couchbase/bin/couchbase-cli cluster-init -c 127.0.0.1:8091 --cluster-name CouchbaseServer --cluster-username={{ username }} --cluster-password={{ password }} --services data 
  
   - name: Create shell script to add node 
     template:
@@ -40,11 +39,11 @@
               path: /tmp/addnod.sh
               insertafter: "nodetwo"
               block: |
-                 /opt/couchbase/bin/couchbase-cli  server-add -c 127.0.0.1:8091 --username admin --password Testing1234 --server-add  "$nodeone" --server-add-username admin  --server-add-password Testing1234 --services data 
-                 /opt/couchbase/bin/couchbase-cli  server-add -c 127.0.0.1:8091 --username admin --password Testing1234 --server-add  "$nodetwo" --server-add-username admin  --server-add-password Testing1234 --services data
+                 /opt/couchbase/bin/couchbase-cli  server-add -c 127.0.0.1:8091 --username={{ username }} --password={{ password }} --server-add  "$nodeone" --server-add-username ={{ username }}  --server-add-password ={{ password }} --services data 
+                 /opt/couchbase/bin/couchbase-cli  server-add -c 127.0.0.1:8091 --username={{ username }} --password={{ password }} --server-add  "$nodetwo" --server-add-username={{ username }}  --server-add-password={{ password }} --services data
   - name: Launch config script to add node 
     command: bash /tmp/addnod.sh
 
 
   - name: Rebalance the cluster
-    shell: /opt/couchbase/bin/couchbase-cli rebalance -c 127.0.0.1:8091 -u admin -p Testing1234
+    shell: /opt/couchbase/bin/couchbase-cli rebalance -c 127.0.0.1:8091 -u {{ username }} -p {{ password }}
