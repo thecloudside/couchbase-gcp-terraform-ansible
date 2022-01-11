@@ -1,16 +1,16 @@
 resource "google_compute_instance" "vm1" {
-    name = "couchbase-main"
-    machine_type = "e2-medium"
-    zone = "us-west4-b"
+    name = var.vm-name
+    machine_type = var.machine_type
+    zone = var.zone
     tags = ["name", "main-node"]
  boot_disk {
     initialize_params {
-      image = "ubuntu-minimal-1804-lts"
+      image = var.image
     }
   }
 
   network_interface {
-    network = "default"
+    network = var.network
 
     access_config {
       // Ephemeral public IP
@@ -19,8 +19,8 @@ resource "google_compute_instance" "vm1" {
 
   connection {
     type = "ssh"
-    user = "sabir"
-    private_key = file("/tmp/test")
+    user = var.ssh-username
+    private_key = file("${var.private-key-path}")
     host = google_compute_instance.vm1.network_interface.0.access_config.0.nat_ip
   }
 
@@ -29,6 +29,6 @@ resource "google_compute_instance" "vm1" {
   }
 
   provisioner "local-exec" {
-    command = "ansible-playbook -i ${google_compute_instance.vm1.network_interface.0.access_config.0.nat_ip}, /root/ws-couchbase/couchbase-cluster-setup.yml"  
+    command = "ansible-playbook -i ${google_compute_instance.vm1.network_interface.0.access_config.0.nat_ip}, ${var.playbook-absolute-path}/couchbase-gcp-terraform-ansible/couchbase-cluster-setup.yml"  
   }
 }
