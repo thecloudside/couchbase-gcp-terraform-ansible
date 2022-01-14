@@ -13,8 +13,8 @@ module "couchbasenode" {
     image                   = "ubuntu-minimal-1804-lts"
     network                 = "default"
     subnetwork              = "default"
-    ssh-username            = "sabir"                           #as per your ssh public key
-    private-key-path        = "/tmp/test"                   # make sure it is accessible
+    ssh-username            = "devuser"                           #as per your ssh public key
+    private-key-path        = "/tmp/test-key"                   # make sure it is accessible
     playbook-path           = "/root"
     tags                    = ["couchbase"]
   }
@@ -36,8 +36,8 @@ module "couchbasemain" {
     image                   = "ubuntu-minimal-1804-lts"
     network                 = "default"
     subnetwork              = "default"
-    ssh-username            = "sabir"
-    private-key-path        = "/tmp/test"
+    ssh-username            = "devuser"
+    private-key-path        = "/tmp/test-key"
     playbook-path           = "/root"
     tags                    = ["couchbase"]
     depends_on = [

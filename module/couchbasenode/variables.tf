@@ -42,12 +42,12 @@ variable "tags" {
 
 variable "ssh-username" {
   type = string
-  default = "sabir"
+  default = "devuser"
 }
 
 variable "private-key-path" {
   type = string
-  default = "/tmp/test"  #make sure file is accessible
+  default = "/tmp/test-key"  #make sure file is accessible
 }
 
 variable "playbook-path" {
