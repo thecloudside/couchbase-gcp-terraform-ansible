@@ -11,7 +11,7 @@ Here we will see how to set up a three-node couchbase cluster.
 
 4- Edit the `variables.tf` file and update variables as per your workspace 
 
-5- Open the `main.tf` and update the variables  there also 
+5- if you want to change `vm-name, machine_type, network, tags, image-name, ssh-username etc` then edit the main.tf file and update there.
 
 ## Usage
 
