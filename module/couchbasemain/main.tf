@@ -1,8 +1,8 @@
 resource "google_compute_instance" "vm1" {
-    name = var.vm-name
+    name = var.vm-1-name
     machine_type = var.machine_type
     zone = var.zone
-    tags = ["name", "main-node"]
+    tags = var.tags
  boot_disk {
     initialize_params {
       image = var.image
@@ -11,7 +11,7 @@ resource "google_compute_instance" "vm1" {
 
   network_interface {
     network = var.network
-
+    subnetwork = var.subnetwork
     access_config {
       // Ephemeral public IP
     }
@@ -29,6 +29,6 @@ resource "google_compute_instance" "vm1" {
   }
 
   provisioner "local-exec" {
-    command = "ansible-playbook -i ${google_compute_instance.vm1.network_interface.0.access_config.0.nat_ip}, ${var.playbook-absolute-path}/couchbase-gcp-terraform-ansible/couchbase-cluster-setup.yml"  
+    command = "ansible-playbook -i ${google_compute_instance.vm1.network_interface.0.access_config.0.nat_ip}, ${var.playbook-path}/couchbase-gcp-terraform-ansible/couchbase-cluster-setup.yml"  
   }
 }

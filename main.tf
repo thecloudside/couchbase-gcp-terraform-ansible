@@ -6,15 +6,17 @@ provider "google" {
 
 module "couchbasenode" {
     source                  = "./module/couchbasenode"
-    vm-1-name               = "couchbase-node-1"
-    vm-2-name               = "couchbase-node-2"
+    vm-2-name               = "couchbase-vm-02"
+    vm-3-name               = "couchbase-vm-03"
     machine_type            = "e2-medium"
     zone                    = "us-west4-b"
     image                   = "ubuntu-minimal-1804-lts"
     network                 = "default"
+    subnetwork              = "default"
     ssh-username            = "sabir"                           #as per your ssh public key
     private-key-path        = "/tmp/test"                   # make sure it is accessible
-    playbook-absolute-path  = "/root"
+    playbook-path           = "/root"
+    tags                    = ["couchbase"]
   }
 
 resource "local_file" "add-node-script-file" {
@@ -28,14 +30,16 @@ resource "local_file" "add-node-script-file" {
 
 module "couchbasemain" {
     source                  = "./module/couchbasemain"
-    vm-name                 = "couchbase-main"
+    vm-1-name               = "couchbase-vm-01"
     machine_type            = "e2-medium"
     zone                    = "us-west4-b"
     image                   = "ubuntu-minimal-1804-lts"
     network                 = "default"
+    subnetwork              = "default"
     ssh-username            = "sabir"
     private-key-path        = "/tmp/test"
-    playbook-absolute-path  = "/root"
+    playbook-path           = "/root"
+    tags                    = ["couchbase"]
     depends_on = [
       local_file.add-node-script-file
     ]

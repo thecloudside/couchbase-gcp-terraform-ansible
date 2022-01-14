@@ -1,9 +1,9 @@
 resource "google_compute_instance" "vm2" {
-  name         = var.vm-1-name
+  name         = var.vm-2-name
   machine_type = var.machine_type
   zone         = var.zone
 
-  tags = ["name", "couchbase-node"]
+  tags = var.tags
 
   boot_disk {
     initialize_params {
@@ -13,6 +13,7 @@ resource "google_compute_instance" "vm2" {
 
   network_interface {
     network = var.network
+    subnetwork = var.subnetwork
 
     access_config {
       // Ephemeral public IP
@@ -32,15 +33,15 @@ connection {
 
 
 provisioner "local-exec" {
-         command = "ansible-playbook -i ${google_compute_instance.vm2.network_interface.0.access_config.0.nat_ip}, ${var.playbook-absolute-path}/ws-couchbase/couchbase-node-setup.yml"
+         command = "ansible-playbook -i ${google_compute_instance.vm2.network_interface.0.access_config.0.nat_ip}, ${var.playbook-path}/ws-couchbase/couchbase-node-setup.yml"
 }
 }
 resource "google_compute_instance" "vm3" {
-  name         = var.vm-2-name
+  name         = var.vm-3-name
   machine_type = var.machine_type
   zone         = var.zone
 
-  tags = ["name", "couchbase-node"]
+  tags = var.tags
 
   boot_disk {
     initialize_params {
@@ -50,6 +51,7 @@ resource "google_compute_instance" "vm3" {
 
   network_interface {
     network = var.network
+    subnetwork = var.subnetwork
 
     access_config {
       // Ephemeral public IP
@@ -68,7 +70,7 @@ provisioner "remote-exec" {
 }
 
 provisioner "local-exec" {
-         command = "ansible-playbook -i ${google_compute_instance.vm3.network_interface.0.access_config.0.nat_ip}, ${var.playbook-absolute-path}/ws-couchbase/couchbase-node-setup.yml"
+         command = "ansible-playbook -i ${google_compute_instance.vm3.network_interface.0.access_config.0.nat_ip}, ${var.playbook-path}/ws-couchbase/couchbase-node-setup.yml"
 }
 }
 
