@@ -3,7 +3,7 @@
   hosts: all
    
   tasks:
-  - name: download Couchbase package
+  - name: Download Couchbase package
     get_url: 
       url: https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-amd64.deb 
       dest: ~/.
