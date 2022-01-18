@@ -1,6 +1,7 @@
 provider "google" { 
     project = var.project-id
     region = var.region
+    zone   = var.zone
   
 }
 
@@ -9,7 +10,6 @@ module "couchbasenode" {
     vm-2-name               = "couchbase-vm-02"
     vm-3-name               = "couchbase-vm-03"
     machine_type            = "e2-medium"
-    zone                    = "us-west4-b"
     image                   = "ubuntu-minimal-1804-lts"
     network                 = "default"
     subnetwork              = "default"
@@ -32,7 +32,6 @@ module "couchbasemain" {
     source                  = "./module/couchbasemain"
     vm-1-name               = "couchbase-vm-01"
     machine_type            = "e2-medium"
-    zone                    = "us-west4-b"
     image                   = "ubuntu-minimal-1804-lts"
     network                 = "default"
     subnetwork              = "default"

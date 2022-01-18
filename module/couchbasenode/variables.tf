@@ -14,10 +14,6 @@ variable "machine_type" {
   default = "e2-medium"
 }
 
-variable "zone" {
-  type = string
-  default = "us-west4-b"
-}
 
 variable "image" {
   type = string
