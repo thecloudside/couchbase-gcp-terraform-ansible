@@ -16,8 +16,6 @@ variable "zone" {
 variable "add-node-script-file" {
   type = string
   description = "Script file path to save the details of node"
-  default = "/root"
-
 }
 
 variable "vm-1-name" {
@@ -49,13 +47,11 @@ variable "image" {
 variable "network" {
   type = string
   description = "VPC Name"
-  default = "default"
 }
 
 variable "subnetwork" {
   type = string
   description = "Subnet Name"
-  default = "default"
 }
 
 variable "tags" {
