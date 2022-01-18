@@ -30,7 +30,7 @@
  
   - name: Create shell script to add node 
     template:
-      src: /root/couchbase-add-node.j2 
+      src: /tmp/couchbase-add-node.j2 
       dest: /tmp/addnod.sh
       mode: '750'
 

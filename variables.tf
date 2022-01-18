@@ -13,11 +13,6 @@ variable "zone" {
   description = "The zones to host VM"
 }
 
-variable "add-node-script-file" {
-  type = string
-  description = "Script file path to save the details of node"
-}
-
 variable "vm-1-name" {
   type = string
   default = "couchbase-vm-01"
