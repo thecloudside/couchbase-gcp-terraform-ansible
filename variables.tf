@@ -1,26 +1,28 @@
 variable "project-id" {
   type = string
-  default = "project-1-334518"
+  description = "The project ID to host the cluster in (required)"
 }
 
 variable "region" {
   type = string
-  default = "us-west4"
+  description = "The region to host the VM"
 }
 
 variable "zone" {
   type = string
-  default = "us-west4-b"
+  description = "The zones to host VM"
 }
 
 variable "add-node-script-file" {
   type = string
+  description = "Script file path to save the details of node"
   default = "/root"
+
 }
 
 variable "vm-1-name" {
   type = string
-  default = "couchbase-01"
+  default = "couchbase-vm-01"
 }
 
 variable "vm-2-name" {
@@ -30,7 +32,7 @@ variable "vm-2-name" {
 
 variable "vm-3-name" {
   type = string
-  default = "couchabase-03"
+  default = "couchabase-vm-03"
 }
 
 
@@ -46,32 +48,35 @@ variable "image" {
 
 variable "network" {
   type = string
+  description = "VPC Name"
   default = "default"
 }
 
 variable "subnetwork" {
   type = string
+  description = "Subnet Name"
   default = "default"
 }
 
 variable "tags" {
   type    = list(string)
+  description = "Network tags"
   default = ["couchbase"]
 }
 
 
 variable "ssh-username" {
   type = string
-  default = "devuser"
+  description = "SSH key username, which is given in public key"
 }
 
 variable "private-key-path" {
   type = string
-  default = "/tmp/test-key"  #make sure file is accessible
+  description = "SSH Private key path" 
 }
 
 variable "playbook-path" {
   type = string
-  default = "/root"  #make sure file is accessible
+  description = "Playbook path, Where you clone the code"
 }
 
