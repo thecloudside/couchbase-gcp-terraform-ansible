@@ -1,6 +1,7 @@
 resource "google_compute_instance" "vm2" {
   name         = var.vm-2-name
   machine_type = var.machine_type
+
   tags = var.tags
 
   boot_disk {
@@ -37,6 +38,7 @@ provisioner "local-exec" {
 resource "google_compute_instance" "vm3" {
   name         = var.vm-3-name
   machine_type = var.machine_type
+
   tags = var.tags
 
   boot_disk {

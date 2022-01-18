@@ -14,7 +14,6 @@ variable "machine_type" {
   default = "e2-medium"
 }
 
-
 variable "image" {
   type = string
   default = "ubuntu-minimal-1804-lts"

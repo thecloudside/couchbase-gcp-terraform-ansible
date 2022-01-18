@@ -7,16 +7,16 @@ provider "google" {
 
 module "couchbasenode" {
     source                  = "./module/couchbasenode"
-    vm-2-name               = "couchbase-vm-02"
-    vm-3-name               = "couchbase-vm-03"
-    machine_type            = "e2-medium"
-    image                   = "ubuntu-minimal-1804-lts"
-    network                 = "default"
-    subnetwork              = "default"
-    ssh-username            = "devuser"                           #as per your ssh public key
-    private-key-path        = "/tmp/test-key"                   # make sure it is accessible
-    playbook-path           = "/root"
-    tags                    = ["couchbase"]
+    vm-2-name               = var.vm-2-name
+    vm-3-name               = var.vm-3-name
+    machine_type            = var.machine_type
+    image                   = var.image
+    network                 = var.network
+    subnetwork              = var.subnetwork
+    ssh-username            = var.ssh-username                       #as per your ssh public key
+    private-key-path        = var.private-key-path                  # make sure it is accessible
+    playbook-path           = var.playbook-path
+    tags                    = var.tags
   }
 
 resource "local_file" "add-node-script-file" {
@@ -30,15 +30,15 @@ resource "local_file" "add-node-script-file" {
 
 module "couchbasemain" {
     source                  = "./module/couchbasemain"
-    vm-1-name               = "couchbase-vm-01"
-    machine_type            = "e2-medium"
-    image                   = "ubuntu-minimal-1804-lts"
-    network                 = "default"
-    subnetwork              = "default"
-    ssh-username            = "devuser"
-    private-key-path        = "/tmp/test-key"
-    playbook-path           = "/root"
-    tags                    = ["couchbase"]
+    vm-1-name               = var.vm-1-name
+    machine_type            = var.machine_type
+    image                   = var.image
+    network                 = var.network
+    subnetwork              = var.subnetwork
+    ssh-username            = var.ssh-username
+    private-key-path        = var.private-key-path
+    playbook-path           = var.playbook-path
+    tags                    = var.tags
     depends_on = [
       local_file.add-node-script-file
     ]

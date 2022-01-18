@@ -1,13 +1,18 @@
-variable "vm-1-name" {
+variable "vm-2-name" {
   type = string
-  default = "couchabase-vm-01"
+  default = "couchabase-vm-02"
 }
+
+variable "vm-3-name" {
+  type = string
+  default = "couchabase-vm-03"
+}
+
 
 variable "machine_type" {
   type = string
   default = "e2-medium"
 }
-
 
 variable "image" {
   type = string
@@ -29,6 +34,7 @@ variable "tags" {
   default = ["couchbase"]
 }
 
+
 variable "ssh-username" {
   type = string
   default = "devuser"
@@ -41,6 +47,6 @@ variable "private-key-path" {
 
 variable "playbook-path" {
   type = string
-  default = "/root"  
+  default = "/root"  #make sure file is accessible
 }
 
