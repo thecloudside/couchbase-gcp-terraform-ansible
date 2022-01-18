@@ -33,7 +33,7 @@ connection {
 
 
 provisioner "local-exec" {
-         command = "ansible-playbook -i ${google_compute_instance.vm2.network_interface.0.access_config.0.nat_ip}, ${var.playbook-path}/ws-couchbase/couchbase-node-setup.yml"
+         command = "ansible-playbook -i ${google_compute_instance.vm2.network_interface.0.access_config.0.nat_ip}, ${var.playbook-path}/couchbase-gcp-terraform-ansible/couchbase-node-setup.yml"
 }
 }
 resource "google_compute_instance" "vm3" {
@@ -70,7 +70,7 @@ provisioner "remote-exec" {
 }
 
 provisioner "local-exec" {
-         command = "ansible-playbook -i ${google_compute_instance.vm3.network_interface.0.access_config.0.nat_ip}, ${var.playbook-path}/ws-couchbase/couchbase-node-setup.yml"
+         command = "ansible-playbook -i ${google_compute_instance.vm3.network_interface.0.access_config.0.nat_ip}, ${var.playbook-path}/couchbase-gcp-terraform-ansible/couchbase-node-setup.yml"
 }
 }
 
