@@ -13,6 +13,8 @@ Here we will see how to set up a three-node couchbase cluster.
 
 5- if you want to change `vm-name, machine_type, network, tags, image-name, ssh-username etc` then edit the main.tf file and update there.
 
+6- Create a firewall rule to allow port no `8091` in your vpc.
+
 ## Usage
 
 ```bash
