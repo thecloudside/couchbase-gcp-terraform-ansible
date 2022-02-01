@@ -11,7 +11,6 @@ Here we will see how to set up a three-node couchbase cluster.
 
 4- Edit the `variables.tf` file and update variables as per your workspace 
 
-6- Create a firewall rule to allow port no `8091` in your vpc.
 
 ## Usage
 
