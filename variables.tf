@@ -73,7 +73,7 @@ variable "playbook-path" {
 
 variable "firewall-rule-name" {
   type = string
-  description = "The firewall rule for connecting nodes"
+  description = "The firewall rule for connecting couchbase nodes"
 }
 
 variable "source-range" {
