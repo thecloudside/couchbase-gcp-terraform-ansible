@@ -1,6 +1,6 @@
 # How to Setup Couchbase Cluster Using the integration of Ansible and Terraform 
 
-Here we will see how to set up a three-node couchbase cluster.
+Setting up a couchbase cluster on GCE using Terraform and Ansible
 
 ## How to use this code in your workspace
 1- Setup [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) in your workspace 
