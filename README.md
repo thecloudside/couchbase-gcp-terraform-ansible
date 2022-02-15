@@ -7,7 +7,7 @@ Setting up a couchbase cluster on GCE using Terraform and Ansible
 
 2- Setup [Terraform](https://www.terraform.io/downloads) in your workspace 
 
-3- Clone the code in your workspace 
+3- Clone this repo to your workspace 
 
 4- Edit the `variables.tf` file and update variables as per your workspace 
 
