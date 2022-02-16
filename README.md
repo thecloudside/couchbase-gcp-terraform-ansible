@@ -1,4 +1,4 @@
-# How to Setup Couchbase Cluster Using the integration of Ansible and Terraform 
+# Setup Couchbase Cluster Using Ansible and Terraform on GCP
 
 Setting up a couchbase cluster on GCE using Terraform and Ansible
 
