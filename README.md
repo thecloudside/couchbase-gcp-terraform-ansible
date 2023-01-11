@@ -29,6 +29,6 @@ terraform apply --auto-approve
 ```
 
 
-## For more information,, How to use this code see the below blog 
+## For more information, How to use this code see the below blog 
 
 [How to setup couchbase cluster using the integration of Ansible and Terraform](https://blog.thecloudside.com/tutorial-setup-a-couchbase-cluster-on-gcp-using-terraform-and-ansible-4a52c9cd4bee)
